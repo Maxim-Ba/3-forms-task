@@ -3,16 +3,22 @@ import { rules } from "../Validator/rules.js";
 import { WARNINGS } from "./constants.js";
 
 export class FormController {
-  constructor(form, Validator, cb = console.log) {
+  constructor(
+    form,
+    Validator,
+    fileInput = null,
+    infoElem = null,
+    closeElem = null,
+    cb = console.log,
+  ) {
     this.form = form;
     this.cb = cb;
     this.validator = new Validator(this.form, rules);
     this.passwordWarning = document.getElementById("password-warning");
     this.form.addEventListener("submit", this._handleSubmit);
-    const fileInput = document.getElementById("file");
-    const infoElem = document.getElementById("field__file-info");
-    const closeElem = document.getElementById("field__file-delete");
-    new FileInput(fileInput, infoElem, closeElem);
+    if (fileInput && infoElem && closeElem) {
+      new FileInput(fileInput, infoElem, closeElem);
+    }
   }
 
   _handleSubmit = (event) => {
@@ -23,6 +29,7 @@ export class FormController {
     if (checkResult === true) {
       const data = new FormData(event.target);
       console.log(Array.from(data.entries()));
+      this.cb();
       return;
     }
     this._setWrongField(checkResult);

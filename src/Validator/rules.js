@@ -51,4 +51,10 @@ export const rules = [
       accept: ".jpg,.jpeg,.png",
     },
   },
+  {
+    name: "logo",
+    rule: {
+      accept: ".jpg,.jpeg,.png",
+    },
+  },
 ];

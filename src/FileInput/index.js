@@ -47,6 +47,7 @@ export class FileInput {
     this.infoElem.classList.add("field__file-info_loaded");
     this.closeElem.classList.remove("display-none");
     this.infoElem.addEventListener("click", this._downloadFile);
+    this.fileInput.disabled = true;
   };
 
   _deleteFile = () => {
@@ -56,38 +57,9 @@ export class FileInput {
     this.infoElem.classList.remove("field__file-info_loaded");
 
     this.infoElem.removeEventListener("click", this._downloadFile);
+    this.fileInput.disabled = false;
   };
   _downloadFile = () => {
-    // let link = document.createElement("a");
-
-    // let file = this.fileInput.files[0];
-    // let blob = new Blob(this.file.src, { type: "image/jpg" });
-    // let reader = new FileReader();
-
-    // reader.onload = function () {
-    //   link.href = reader.result; // url с данными
-    //   link.click();
-    // };
-    // reader.readAsDataURL(blob); // конвертирует Blob в base64 и вызывает onload
-
-    // создаём <canvas> того же размера
-    // let canvas = document.createElement("canvas");
-    // canvas.width = this.file.width;
-    // canvas.height = this.file.height;
-    // let link = document.createElement("a");
-
-    // let context = canvas.getContext("2d");
-
-    // // копируем изображение в  canvas (метод позволяет вырезать часть изображения)
-    // context.drawImage(this.file, 0, 0);
-    // // мы можем вращать изображение при помощи context.rotate() и делать множество других преобразований
-
-    // // toBlob является асинхронной операцией, для которой callback-функция вызывается при завершении
-    // link.href = canvas.toDataURL();
-    // console.log(canvas);
-    // // ;
-    // link.click();
-
     let file = this.fileInput.files[0];
     let fr = new FileReader();
     fr.onloadend = function () {

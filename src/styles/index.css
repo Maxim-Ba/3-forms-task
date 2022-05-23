@@ -111,3 +111,25 @@ margin: auto;
   transition: border .25s,color .25s,background-color .25s;
   outline: none;
 }
+.btn_fix-default-style{
+  border-radius: 0 !important;
+  border: #31ACB8 1px solid !important;
+  background-color: #EAF7F8 !important;
+  color: #31ACB8 !important;
+  min-height: 3.71429rem;
+  margin-right: 20px;
+}
+.form_select_fix{
+  background-image:none !important
+}
+.field__upload input:disabled{
+  color: gray;
+  border: 1px gray solid;
+}
+
+.field-title__text{
+  font-weight: bold;
+}
+.select-country{
+  
+}

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!--html.nav-opened-->
-<!--html.search-opened-->
+
 <html class="js">
 
 <head>
@@ -10,16 +9,17 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="format-detection" content="telephone=no">
-  <link rel="stylesheet" href="_files/css2.css">
+  <link rel="stylesheet" href="./_files/css2.css">
   <link rel="stylesheet" href="./src/styles/index.css">
   <title>Регистрация</title>
-  <link href="_files/main.css" rel="stylesheet">
+  <link href="./_files/main.css" rel="stylesheet">
+  <link href="./src/styles/customSelector.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script defer src="https://unpkg.com/imask"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
 
-  <script type="text/javascript" src="_files/nmcades_plugin_api.js"></script>
+  <script type="text/javascript" src="./_files/nmcades_plugin_api.js"></script>
 </head>
 
 <body data-timestamp="1650618946">
@@ -55,7 +55,7 @@
                   <div data-v-b77f7d0a="" class="col col-lg-5 col-md-6 col-xs-12 registration__form">
                     <div data-v-b77f7d0a="">
                       <div data-v-493f45f2="" data-v-b77f7d0a="" mode="eager">
-                        <form novalidate data-v-493f45f2="" class="support-form__form">
+                        <form name="reg1" novalidate data-v-493f45f2="" class="support-form__form ">
                           <h3 data-v-493f45f2="">Шаг 1: Заполните Личные данные</h3> <label data-v-493f45f2=""
                             class="input__container field__container" label="Фамилия"><span class="field__label">
                               Фамилия
@@ -2532,6 +2532,141 @@
                               Сохранить и продолжить
                             </button></div>
                         </form>
+                        <!--2 FORM-->
+                        <form name="reg2" class="support-form__form display-none">
+                          <h3>Шаг 2: Заполните данные об Организации</h3>
+                          <div class="popup__tabs"><label><input type="radio" name="type" value="0"> <span>Новая
+                                компания</span></label> <label><input type="radio" name="type" value="1"> <span
+                                id="to-next-step">Уже
+                                зарегистрирована</span></label></div>
+                          <div>
+                            <label class="field__container select__container field__container"
+                              label="Страна регистрации">
+                              <span class="field__label">Страна регистрации</span>
+                              <select class="multiselect field form-select select-contry" id="country-selector">
+                                <option selected value="ru">Россия</option>
+                                <option value="ca">Канада</option>
+                                <option value="cz">Казахстан</option>
+
+                              </select>
+                              <!---->
+                            </label>
+                            <label data-v-493f45f2="" class="input__container field__container field__upload"
+                              label="Пароль">
+                              <p class="field__btn-name">
+                                Загрузить логотип
+                              </p>
+                              <div class="relative">
+                                <!---->
+                                <input placeholder="Загрузить логотип" type="file" class="field field__file" name="logo"
+                                  id="logo">
+                                <!---->
+                                <!---->
+                              </div>
+                              <!---->
+                              <!---->
+                            </label>
+                            <div class="flex-container">
+                              <p id="field__logo-info" class="field__file-info">Загрузите фото в пропорции 1 к 1 в
+                                формате
+                                .jpg(jpeg), png</p>
+                              <p id="field__logo-delete" class="field__file-delete display-none">&times;</p>
+                            </div>
+
+                            <div class="field__container">
+                              <div class="field-title">
+                                <p class="field-title__text">Тип организации</p>
+                              </div>
+                              <label class="radio">
+                                <input type="radio" required true-value="1" false-value="0" name="org-type"
+                                  value="LEGAL_ENTITY" id="LEGAL_ENTITY">
+                                <span class="radio__body"></span> <span class="radio__text">Юридическое лицо</span>
+                              </label>
+                              <label class="radio">
+                                <input type="radio" name="org-type" true-value="1" false-value="0" value="INDIVIDUAL"
+                                  id="INDIVIDUAL">
+                                <span class="radio__body"></span> <span class="radio__text">Индивидуальный
+                                  предприниматель</span>
+                              </label>
+                            </div>
+                            <label class="input__container field__container" label="ИНН"><span class="field__label">
+                                ИНН
+                              </span>
+                              <div class="relative">
+                                <!---->
+                                <input placeholder="" type="tel" class="field" id="inn">
+                                <div class="multiselect__spinner field__spinner" style="display: none;"></div>
+                                <!---->
+                                <!---->
+                              </div>
+                              <!---->
+                              <!---->
+                            </label>
+                            <label class="input__container field__container">
+                              <span class="field__label">
+                                ОКВЭД
+                              </span>
+                              <div class="accordion">
+                                <div class="accordion-item">
+                                  <h2 class="accordion-header" id="headingOKVED">
+                                    <button class="accordion-button spoiler__header" type="button"
+                                      data-bs-toggle="collapse" data-bs-target="#collapseOKVED" aria-expanded="true"
+                                      aria-controls="collapseOKVED">
+                                      Введите название или выбирете из списка
+                                    </button>
+                                  </h2>
+                                  <div id="collapseOKVED" class="accordion-collapse collapse "
+                                    aria-labelledby="headingOKVED">
+                                    <div class="custom-selector" id="selector-wrapper-1">
+
+
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                            </label>
+                            <label class="input__container field__container">
+                              <span class="field__label">
+                                ОКПД2
+                              </span>
+                              <div class="accordion">
+                                <div class="accordion-item">
+                                  <h2 class="accordion-header" id="headingOKDP2">
+                                    <button class="accordion-button spoiler__header" type="button"
+                                      data-bs-toggle="collapse" data-bs-target="#collapseOKDP2" aria-expanded="true"
+                                      aria-controls="collapseOKDP2">
+                                      Введите название или выбирете из списка
+                                    </button>
+                                  </h2>
+                                  <div id="collapseOKDP2" class="accordion-collapse collapse "
+                                    aria-labelledby="headingOKDP2">
+
+                                    sdfsdfsdfsd
+                                  </div>
+                                </div>
+
+                              </div>
+
+                            </label>
+
+
+                            <!---->
+                            <!---->
+                          </div>
+                          <!---->
+                          <div class="btn-flex field__container"><button type="button"
+                              class="btn2 btn--bdr1 btn_fix-default-style" id="back-to-1">
+                              Вернуться на шаг 1
+                            </button> <button type="submit" class="btn-overload">
+                              Сохранить и продолжить
+                            </button></div>
+                        </form>
+
+                        <!---->
+
+
                       </div>
                     </div>
                     <!---->
@@ -2548,7 +2683,7 @@
                         </div>
 
 
-                        <div class="accordion" id="accordionExample">
+                        <div class="accordion">
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
                               <button class="accordion-button spoiler__header" type="button" data-bs-toggle="collapse"
@@ -2652,7 +2787,7 @@
                     </div>
                     <div data-v-b77f7d0a="" class="registration__tab">
                       <div data-v-20a93402="" data-v-b77f7d0a="" class="gis">
-                        <div data-v-20a93402="" class="gis__item"><img data-v-20a93402="" src="/content/gis.png" alt="">
+                        <div data-v-20a93402="" class="gis__item"><img data-v-20a93402="" src="/_files/gis.png" alt="">
                         </div>
                         <div data-v-20a93402="" class="gis__item">
                           <div data-v-20a93402="" class="gis__title">
